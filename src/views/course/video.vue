@@ -102,7 +102,7 @@ export default Vue.extend({
           console.log(data)
 
           const timer = setInterval(async () => {
-            const { data } = await getAliyunTransCodePercent(this.$route.query.lessonId)
+            const { data } = await getAliyunTransCodePercent(this.$route.query.lessonId as string | number)
             if (data.data === 100) {
               this.$message.success('转码成功')
               window.clearInterval(timer)
@@ -113,11 +113,11 @@ export default Vue.extend({
       })
     },
     authUpload () {
-      const videoFile = this.$refs['video-file'].files[0]
-      this.uploader.addFile(videoFile, null, null, null, '{"Vod":{}}')
-      this.uploader.addFile(this.$refs['image-file'].files[0], null, null, null, '{"Vod":{}}')
+      const videoFile = (this.$refs['video-file'] as any).files[0]
+      ;(this.uploader as any).addFile(videoFile, null, null, null, '{"Vod":{}}')
+      ;(this.uploader as any).addFile((this.$refs['image-file'] as any).files[0], null, null, null, '{"Vod":{}}')
       this.fileName = videoFile.name
-      this.uploader.startUpload()
+      ;(this.uploader as any).startUpload()
     }
   }
 })

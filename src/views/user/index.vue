@@ -91,13 +91,13 @@ export default Vue.extend({
         phone: '',
         time: [],
         startCreateTime: '',
-        endCreateTime: '',
-        loading: true
+        endCreateTime: ''
       },
       dialogVisible: false,
       roles: [],
       currentRole: null,
-      roleIdList: []
+      roleIdList: [],
+      loading: true
     }
   },
   created () {
