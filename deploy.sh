@@ -6,6 +6,6 @@ npm run build
 
 rm -rf /home/www/*
 
-mv /tmp/my-vue-demo/dist/* /home/www
+mv /root/my-vue-demo/dist/* /home/www
 
-rm -rf /tmp/my-vue-demo
+rm -rf /root/my-vue-demo
