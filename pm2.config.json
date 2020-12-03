@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "EduBoss",
+      "script": "npm", 
+      "args": "start"
+    }
+  ]
+}

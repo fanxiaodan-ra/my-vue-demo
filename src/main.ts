@@ -2,8 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import ElementUI from 'element-ui'
+import Layout from './layout/index.vue'
+import 'element-ui/lib/theme-chalk/index.css'
+import '@/styles/index.scss'
 Vue.config.productionTip = false
+Vue.use(ElementUI)
+Vue.component('Layout', Layout)
 
 new Vue({
   router,
