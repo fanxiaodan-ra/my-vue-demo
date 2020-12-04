@@ -4,7 +4,7 @@ import qs from 'qs'
 // 在单独的js或ts中，要通过编码的方式加载组件
 import { Message } from 'element-ui'
 import router from '@/router'
-
+const domain = process.env.NODE_ENV === 'development' ? '' : 'http://edufront.lagou.com'
 function redirectLogin () {
   router.push({
     name: 'login',
@@ -17,7 +17,7 @@ function redirectLogin () {
 function refreshToken () {
   return axios.create()({
     method: 'POST',
-    url: '/front/user/refresh_token',
+    url: `${domain}/front/user/refresh_token`,
     data: qs.stringify({
       // refreshtoken只能使用一次
       refreshtoken: store.state.user.refresh_token
@@ -34,6 +34,7 @@ const request = axios.create({
 // 请求拦截器
 request.interceptors.request.use((config) => {
   // 在这里通过改写config配置信息实现业务功能统一处理
+  config.url = `${domain}${config.url}`
   const { user } = store.state
   if (user && user.access_token) {
     config.headers.Authorization = user.access_token
